@@ -14,4 +14,7 @@ describe('findAndReplace', function() {
   it('should allow the user the option to pass in false paremter to perform the default sensitive search', function(){
     expect('TtTt'.findAndReplace('T', 'M', false)).to.equal('MtMt');
   });
+  it('should handle a mix use of sensitivity, multiple occurances and in several words', function() {
+    expect('This is the end Theodore'.findAndReplace('Th', 'tH', false)).to.equal('tHis is the end tHeodore');
+  });
 });

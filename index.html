@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <script src="js/jquery-2.1.4.js"></script>
+  <script src="js/scripts.js"></script>
+  <title>Find and Replace</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>Enter text to Find and Replace</h1>  
+    </div>
+    <form>
+      <div class="form-group">
+        <label for="text">Initial Text:</label>
+        <textarea class="form-control" id="text" col="50"></textarea> 
+      </div>
+      <div class="form-group">
+        <label for="find">Find:</label>
+        <input type="text" id="find">   
+      </div>
+      <div class="form-group">
+        <label for="replace">Replace:</label>
+        <input type="text" id="replace">  
+      </div>
+      <div class="form-group">
+        <label for="case-sensitive">Case Sensisitiv</label>
+        <input type="checkbox" id="case-sensitive">  
+      </div>
+
+      <div class="row text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
