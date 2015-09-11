@@ -6,21 +6,22 @@ String.prototype.findAndReplace = function (find, replacement, sensitive) {
 };
 
 $(document).ready(function() {
-
-  var fileInput  = document.getElementById('file-upload');
-  fileInput.addEventListener('change', function(event) {
-    var file = fileInput.files[0];
+  var fileUpload = document.getElementById('file-upload');
+  fileUpload.addEventListener('change', function(event) {
+    var file = fileUpload.files[0];
     var textType = /text.*/;
     if (file.type.match(textType)) {
       var reader = new FileReader();
       reader.onload = function(e) {
         $('#initial-text').val(reader.result);
       }
+      reader.readAsText(file);
+    } else {
+      alert('Only text files are supported. Try plain text.');
     }
   });
 
   $('form').submit(function(event) {
-    event.preventDefault();
     var initialText = $('#initial-text').val();
     var find        = $('#find').val();
     var replacement = $('#replacement').val();
@@ -29,6 +30,7 @@ $(document).ready(function() {
 
     $('#result-container').show();
     $('#result-text').text(result);
+    event.preventDefault();
   });
   $('#reset').click(function() {
     $('#initial-text').val('');
