@@ -27,9 +27,10 @@
         <label for="replacement">Replace:</label>
         <input type="text" required class="form-control" id="replacement">  
       </div>
-      <div class="form-group">
-        <label for="case-sensitive">Turn off case sensitivity
-        <input type="checkbox" class="form-control" id="case-sensitive"></label>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="case-sensitive"> Click to turn <em>off</em> case sensitivity  
+        </label>
       </div>
       <div class="row text-center">
         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Submit</button>
@@ -38,11 +39,15 @@
     <div id="result-container" class="container well">
       <div class="row">
         <p id="result-text" class="lead"></p>
+        <div class="text-center row">
+          <button id="reset" class="btn btn-default">Reset</button>
+        </div>
       </div>
     </div>
   </div>
 </body>
 </html>
+
 
 <script>
   $(document).ready(function() {
@@ -50,12 +55,18 @@
       var initialText = $('#initial-text').val();
       var find        = $('#find').val();
       var replacement = $('#replacement').val();
-      var sensitivity = $('#case-sensitive').val();
+      var sensitivity = $('#case-sensitive').prop('checked');
       var result      = initialText.findAndReplace(find, replacement, sensitivity);
 
       $('#result-container').show();
       $('#result-text').text(result);
       event.preventDefault();
+    });
+    $('#reset').click('click', function() {
+      $('#initial-text').val('');
+      $('#find').val('');
+      $('#replacement').val('');
+      $('#result-container').hide();
     });
   });
 </script>
