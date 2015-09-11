@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <link href="css/styles.css" rel="stylesheet" type="text/css">
@@ -10,31 +11,75 @@
 </head>
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row text-center">
       <h1>Enter text to Find and Replace</h1>  
     </div>
-    <form>
+    <form class="well">
       <div class="form-group">
-        <label for="text">Initial Text:</label>
-        <textarea class="form-control" id="text" col="50"></textarea> 
+        <label for="initial-text">Initial Text:</label>
+        <textarea class="form-control" required id="initial-text" col="50"></textarea> 
       </div>
       <div class="form-group">
         <label for="find">Find:</label>
-        <input type="text" id="find">   
+        <input type="text" required class="form-control" id="find">   
       </div>
       <div class="form-group">
-        <label for="replace">Replace:</label>
-        <input type="text" id="replace">  
+        <label for="replacement">Replace:</label>
+        <input type="text" required class="form-control" id="replacement">  
       </div>
       <div class="form-group">
-        <label for="case-sensitive">Case Sensisitiv</label>
-        <input type="checkbox" id="case-sensitive">  
+        <label for="case-sensitive">Turn off case sensitivity
+        <input type="checkbox" class="form-control" id="case-sensitive"></label>
       </div>
-
       <div class="row text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Submit</button>
       </div>
     </form>
+    <div id="result-container" class="container well">
+      <div class="row">
+        <p id="result-text" class="lead"></p>
+      </div>
+    </div>
   </div>
 </body>
 </html>
+
+<script>
+  $(document).ready(function() {
+    $('form').submit(function(event) {
+      var initialText = $('#initial-text').val();
+      var find        = $('#find').val();
+      var replacement = $('#replacement').val();
+      var sensitivity = $('#case-sensitive').val();
+      var result      = initialText.findAndReplace(find, replacement, sensitivity);
+
+      $('#result-container').show();
+      $('#result-text').text(result);
+      event.preventDefault();
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

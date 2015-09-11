@@ -3,4 +3,4 @@ String.prototype.findAndReplace = function (find, replacement, sensitive) {
   if (sensitive) i = 'i';
   var re = new RegExp(find, 'g' + i);
   return this.replace(re, replacement);
-}
+};
