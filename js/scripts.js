@@ -4,7 +4,6 @@ String.prototype.findAndReplace = function (find, replacement, sensitive) {
   var re = new RegExp(find, 'g' + i);
   return this.replace(re, replacement);
 };
-
 $(document).ready(function() {
   var fileUpload = document.getElementById('file-upload');
   fileUpload.addEventListener('change', function(event) {
@@ -17,22 +16,21 @@ $(document).ready(function() {
       }
       reader.readAsText(file);
     } else {
-      alert('Only text files are supported. Try plain text.');
+      alert('Only text files are supported. Try a plain text file.');
     }
   });
-
   $('form').submit(function(event) {
     var initialText = $('#initial-text').val();
     var find        = $('#find').val();
     var replacement = $('#replacement').val();
     var sensitivity = $('#case-sensitive').prop('checked');
     var result      = initialText.findAndReplace(find, replacement, sensitivity);
-
     $('#result-container').show();
     $('#result-text').text(result);
     event.preventDefault();
   });
   $('#reset').click(function() {
+    $('#file-upload').replaceWith( $('#file-upload').val('').clone(true) );
     $('#initial-text').val('');
     $('#find').val('');
     $('#replacement').val('');
